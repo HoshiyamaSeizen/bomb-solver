@@ -8,7 +8,7 @@ const { Content, Header, Footer, Sider } = Layout;
 
 const App: React.FC = () => {
 	const {
-		token: { colorBgContainer, borderRadiusLG },
+		token: { colorBgContainer, borderRadiusLG, colorBorder },
 	} = theme.useToken();
 
 	const [page, setPage] = useState('main');
@@ -25,26 +25,41 @@ const App: React.FC = () => {
 			<Layout>
 				<Header
 					style={{
+						position: 'sticky',
+						top: 0,
+						zIndex: 1000,
 						background: colorBgContainer,
 						padding: 16,
 						display: 'flex',
 						gap: 16,
 						alignItems: 'center',
+						borderBottom: `1px solid ${colorBorder}`,
+						boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
 					}}
 				>
 					<Button
 						id="toggle-menu"
+						className="btn-icon"
 						type="primary"
 						onClick={toggleCollapse}
 						icon={<MenuOutlined />}
 					/>
 					<Button
+						className="btn-icon"
 						type="primary"
 						onClick={goToHomePage}
 						icon={<HomeOutlined />}
 						disabled={page === 'main'}
 					/>
-					<Typography.Title level={3} style={{ margin: 0 }}>
+					<Typography.Title
+						level={3}
+						style={{
+							margin: 0,
+							textOverflow: 'ellipsis',
+							overflow: 'hidden',
+							whiteSpace: 'nowrap',
+						}}
+					>
 						Bomb Solver
 					</Typography.Title>
 				</Header>
