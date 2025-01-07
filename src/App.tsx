@@ -1,36 +1,54 @@
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Button, theme, Typography } from 'antd';
+import { useState } from 'react';
+import Menu from './components/Menu.tsx';
+import Router from './Router.tsx';
+import { HomeOutlined, MenuOutlined } from '@ant-design/icons';
 
-const { Header, Content, Footer, Sider } = Layout;
-
-const menuItems = [0, 1, 2, 3, 4].map((_, index) => ({
-	key: String(index + 1),
-	icon: null,
-	label: `nav ${index + 1}`,
-}));
+const { Content, Header, Footer, Sider } = Layout;
 
 const App: React.FC = () => {
 	const {
 		token: { colorBgContainer, borderRadiusLG },
 	} = theme.useToken();
 
+	const [page, setPage] = useState('main');
+	const [collapsed, setCollapsed] = useState(true);
+
+	const goToHomePage = () => setPage('main');
+	const toggleCollapse = () => setCollapsed(!collapsed);
+
 	return (
-		<Layout>
-			<Sider
-				breakpoint="lg"
-				collapsedWidth="0"
-				onBreakpoint={(broken) => {
-					console.log(broken);
-				}}
-				onCollapse={(collapsed, type) => {
-					console.log(collapsed, type);
-				}}
-			>
-				<div className="demo-logo-vertical" />
-				<Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={menuItems} />
+		<Layout style={{ minHeight: '100vh' }}>
+			<Sider collapsedWidth="0" collapsed={collapsed}>
+				<Menu theme="dark" page={page} setPage={setPage} />
 			</Sider>
 			<Layout>
-				<Header style={{ padding: 0, background: colorBgContainer }} />
-				<Content style={{ margin: '24px 16px 0' }}>
+				<Header
+					style={{
+						background: colorBgContainer,
+						padding: 16,
+						display: 'flex',
+						gap: 16,
+						alignItems: 'center',
+					}}
+				>
+					<Button
+						id="toggle-menu"
+						type="primary"
+						onClick={toggleCollapse}
+						icon={<MenuOutlined />}
+					/>
+					<Button
+						type="primary"
+						onClick={goToHomePage}
+						icon={<HomeOutlined />}
+						disabled={page === 'main'}
+					/>
+					<Typography.Title level={3} style={{ margin: 0 }}>
+						Bomb Solver
+					</Typography.Title>
+				</Header>
+				<Content style={{ margin: '24px 16px 24px' }}>
 					<div
 						style={{
 							padding: 24,
@@ -39,11 +57,11 @@ const App: React.FC = () => {
 							borderRadius: borderRadiusLG,
 						}}
 					>
-						content
+						<Router theme="dark" page={page} setPage={setPage} />
 					</div>
 				</Content>
 				<Footer style={{ textAlign: 'center' }}>
-					Ant Design ©{new Date().getFullYear()} Created by Ant UED
+					Bomb Solver ©{new Date().getFullYear()} Created by Hoshiyama Seizen
 				</Footer>
 			</Layout>
 		</Layout>
