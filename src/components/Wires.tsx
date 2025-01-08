@@ -118,11 +118,16 @@ const Wires = () => {
 					</Form.Item>
 				))}
 				<Form.Item>
-					<div style={{ display: 'flex', gap: 12 }}>
-						<Button type="primary" onClick={calculateResult}>
+					<div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+						<Button type="primary" onClick={calculateResult} style={{ width: 172 }}>
 							Подсчитать результат
 						</Button>
-						<Button variant="outlined" color="danger" onClick={clearState}>
+						<Button
+							variant="outlined"
+							color="danger"
+							onClick={clearState}
+							style={{ width: 172 }}
+						>
 							Очистить форму
 						</Button>
 					</div>

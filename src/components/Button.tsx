@@ -120,11 +120,16 @@ const Button = () => {
 					<Checkbox />
 				</Form.Item>
 				<Form.Item>
-					<div style={{ display: 'flex', gap: 12 }}>
-						<ButtonAntD type="primary" onClick={calculateResult}>
+					<div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+						<ButtonAntD type="primary" onClick={calculateResult} style={{ width: 172 }}>
 							Подсчитать результат
 						</ButtonAntD>
-						<ButtonAntD variant="outlined" color="danger" onClick={clearState}>
+						<ButtonAntD
+							variant="outlined"
+							color="danger"
+							onClick={clearState}
+							style={{ width: 172 }}
+						>
 							Очистить форму
 						</ButtonAntD>
 					</div>
