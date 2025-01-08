@@ -88,6 +88,7 @@ const Keyboard = () => {
 
 	return (
 		<>
+			<Typography.Text>Выберите 4 клавиши:</Typography.Text>
 			<div style={{ maxWidth: (imageSize + 10) * 10, margin: '30px 0' }}>
 				{keys.map((key) => (
 					<img
@@ -100,6 +101,9 @@ const Keyboard = () => {
 							margin: 5,
 							border: `2px solid ${state.keys.includes(key) ? 'red' : 'white'}`,
 							borderRadius: 10,
+							boxShadow: state.keys.includes(key)
+								? 'inset 0 4px 6px rgba(0, 0, 0, 0.2)'
+								: '0 4px 6px rgba(0, 0, 0, 0.1)',
 						}}
 					/>
 				))}
