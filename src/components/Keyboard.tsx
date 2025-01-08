@@ -108,7 +108,7 @@ const Keyboard = () => {
 					/>
 				))}
 			</div>
-			<div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+			<div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 16 }}>
 				<Button type="primary" onClick={calculateResult} style={{ width: 172 }}>
 					Подсчитать результат
 				</Button>
