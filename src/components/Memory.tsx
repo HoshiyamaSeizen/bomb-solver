@@ -129,7 +129,7 @@ const Memory = () => {
 				</Form.Item>
 				{state.result !== undefined && state.result !== -1 && (
 					<Form.Item>
-						<Typography.Text strong>Нужно кликнуть {state.result}-ю кнопку</Typography.Text>
+						<Typography.Text strong>Нужно нажать {state.result}-ю кнопку</Typography.Text>
 						{state.historyPos.length >= 5 && (
 							<Typography.Text strong>. Конец.</Typography.Text>
 						)}
