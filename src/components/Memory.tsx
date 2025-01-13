@@ -93,7 +93,7 @@ const Memory = () => {
 						</Form.Item>
 						<Form.Item label="Числа на кнопках">
 							{state.keys.map((_, i) => (
-								<Form.Item label={`Число ${i + 1}`} name={['keys', i]}>
+								<Form.Item label={`Число ${i + 1}`} name={['keys', i]} key={'keys_' + i}>
 									<Radio.Group>
 										{[1, 2, 3, 4].map((n) => (
 											<Radio.Button key={`keys_${i}_${n}`} value={n}>
