@@ -30,7 +30,10 @@ const MainMenu: React.FC<Props> = ({ setPage }) => {
 			{modules.map((module) => (
 				<Col key={module.name}>
 					<Card
-						style={{ width: imageSize + 150 }}
+						style={{
+							width: imageSize + 150,
+							border: module.unstable ? '2px dashed rgb(226, 160, 160)' : '',
+						}}
 						hoverable
 						cover={
 							<div
