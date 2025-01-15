@@ -7,6 +7,7 @@ import {
 	morse,
 	morseResult,
 } from '../data/morse';
+import Appendix from './Appendix';
 
 const TIME_FOR_DASH = 300;
 const TIME_FOR_SPACE = 1100;
@@ -167,6 +168,7 @@ const Morse = () => {
 						</ul>
 					</Typography.Paragraph>
 				</Form.Item>
+				<Form.Item label="Введите код Морзе" tooltip={<Appendix category="morse" />} />
 				<div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
 					<Form.Item>
 						<div
@@ -180,9 +182,15 @@ const Morse = () => {
 							<Button
 								type="primary"
 								onMouseDown={handleMouseDown}
-								onTouchStart={handleMouseDown}
+								onTouchStart={(e) => {
+									e.preventDefault();
+									handleMouseDown();
+								}}
 								onMouseUp={handleMouseUp}
-								onTouchEnd={handleMouseUp}
+								onTouchEnd={(e) => {
+									e.preventDefault();
+									handleMouseUp();
+								}}
 								onContextMenu={(e) => e.preventDefault()}
 								style={{
 									borderRadius: '50%',
