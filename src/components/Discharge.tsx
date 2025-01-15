@@ -1,5 +1,11 @@
+import { Typography } from 'antd';
+
 const Discharge = () => {
-	return <div>Discharge</div>;
+	return (
+		<Typography.Text>
+			Разрядите конденсатор, зажимая рычаг, прежде чем он перегрузится.
+		</Typography.Text>
+	);
 };
 
 export default Discharge;
