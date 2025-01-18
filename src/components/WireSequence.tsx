@@ -82,6 +82,7 @@ const WireSequence = () => {
 
 		const result = ([0, 1, 2] as digit[]).filter((i) => {
 			const w = state.wires[i];
+			if (!w.present) return false;
 			countsState[w.color] += 1;
 			return lettersCut[w.color][countsState[w.color] - 1].includes(w.letter);
 		});
