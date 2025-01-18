@@ -66,7 +66,7 @@ const Memory = () => {
 		}
 		state.historyPos.push(pos);
 		state.historyVal.push(val);
-		setState({ ...state, result: val });
+		setState({ ...state, result: pos });
 	};
 
 	return (
