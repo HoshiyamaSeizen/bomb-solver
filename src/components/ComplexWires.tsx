@@ -43,7 +43,7 @@ const ComplexWires = () => {
 		setState({ ...state, wires: newWires });
 	};
 
-	const properties: (keyof Wire)[] = ['hasBlue', 'hasRed', 'hasStar', 'indicatorOn'];
+	const properties: (keyof Wire)[] = ['hasRed', 'hasBlue', 'hasStar', 'indicatorOn'];
 	const dataSource = [
 		{ property: 'У провода красная расцветка' },
 		{ property: 'У провода синяя расцветка' },
@@ -173,6 +173,7 @@ const ComplexWires = () => {
 							dataSource={[0]}
 							columns={columnsResult}
 							pagination={false}
+							rowKey={() => 'result'}
 							style={{ width: 600 }}
 						/>
 					</Form.Item>
