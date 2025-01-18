@@ -16,7 +16,7 @@ type State = {
 	blueCount: number;
 	blackCount: number;
 	wires: Wire[];
-	result?: digit[] | -1 | -2;
+	result?: digit[] | -1;
 };
 
 const lettersCut: {
@@ -63,10 +63,6 @@ const WireSequence = () => {
 	};
 
 	const calculateStepResult = () => {
-		const wiresAmount = state.wires.filter((w) => w.present).length;
-		const uniqueLettersCount = new Set(state.wires.map((w) => w.letter)).size;
-		if (wiresAmount > uniqueLettersCount) return setState({ ...state, result: -1 });
-
 		const countsState: { [K in color]: number } = {
 			red: state.redCount,
 			blue: state.blueCount,
@@ -82,7 +78,7 @@ const WireSequence = () => {
 			blueCount: countsState.blue + counts.blue,
 			blackCount: countsState.black + counts.black,
 		};
-		if (Object.values(countsNew).some((c) => c > 9)) return setState({ ...state, result: -2 });
+		if (Object.values(countsNew).some((c) => c > 9)) return setState({ ...state, result: -1 });
 
 		const result = ([0, 1, 2] as digit[]).filter((i) => {
 			const w = state.wires[i];
@@ -169,7 +165,7 @@ const WireSequence = () => {
 
 				<Form.Item>
 					<div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-						{state.result !== undefined && state.result !== -1 && state.result !== -2 ? (
+						{state.result !== undefined && state.result !== -1 ? (
 							<Button
 								type="primary"
 								onClick={nextStep}
@@ -202,7 +198,7 @@ const WireSequence = () => {
 				{state.step >= 4 && state.result === undefined && (
 					<Typography.Text strong>Конец</Typography.Text>
 				)}
-				{state.result !== undefined && state.result !== -1 && state.result !== -2 && (
+				{state.result !== undefined && state.result !== -1 && (
 					<Form.Item>
 						{state.result.length === 0 ? (
 							<Typography.Text strong>Не нужно резать никакие провода</Typography.Text>
@@ -214,13 +210,6 @@ const WireSequence = () => {
 					</Form.Item>
 				)}
 				{state.result !== undefined && state.result === -1 && (
-					<Form.Item>
-						<Typography.Text strong>
-							Провода не могут быть подсоеденены к одной букве
-						</Typography.Text>
-					</Form.Item>
-				)}
-				{state.result !== undefined && state.result === -2 && (
 					<Form.Item>
 						<Typography.Text strong>
 							В сумме не может быть более 9 проводов одного цвета на всех панелях
