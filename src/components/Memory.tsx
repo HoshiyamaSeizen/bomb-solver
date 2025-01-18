@@ -32,6 +32,7 @@ const Memory = () => {
 			hp = state.historyPos,
 			hv = state.historyVal;
 		const inc = (n: number) => (n + 1) as digit;
+		const dec = (n: number) => (n - 1) as digit;
 		let pos: digit = 1,
 			val: digit = 1;
 		if (step === 1) {
@@ -42,9 +43,9 @@ const Memory = () => {
 		}
 		if (step === 2) {
 			if (s === 1) [pos, val] = [inc(k.indexOf(4)), 4];
-			if (s === 2) [pos, val] = [inc(hp[0]), k[hp[0]]];
+			if (s === 2) [pos, val] = [hp[0], k[dec(hp[0])]];
 			if (s === 3) [pos, val] = [1, k[0]];
-			if (s === 4) [pos, val] = [inc(hp[0]), k[hp[0]]];
+			if (s === 4) [pos, val] = [hp[0], k[dec(hp[0])]];
 		}
 		if (step === 3) {
 			if (s === 1) [pos, val] = [inc(k.indexOf(hv[1])), hv[1]];
@@ -53,10 +54,10 @@ const Memory = () => {
 			if (s === 4) [pos, val] = [inc(k.indexOf(4)), 4];
 		}
 		if (step === 4) {
-			if (s === 1) [pos, val] = [inc(hp[0]), k[hp[0]]];
+			if (s === 1) [pos, val] = [hp[0], k[dec(hp[0])]];
 			if (s === 2) [pos, val] = [1, k[0]];
-			if (s === 3) [pos, val] = [inc(hp[1]), k[hp[1]]];
-			if (s === 4) [pos, val] = [inc(hp[1]), k[hp[1]]];
+			if (s === 3) [pos, val] = [hp[1], k[dec(hp[1])]];
+			if (s === 4) [pos, val] = [hp[1], k[dec(hp[1])]];
 		}
 		if (step === 5) {
 			if (s === 1) [pos, val] = [inc(k.indexOf(hv[0])), hv[0]];
