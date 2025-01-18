@@ -97,7 +97,7 @@ const ComplexWires = () => {
 			state.powerSupplyGeTwo,
 		];
 		const result = state.wires.map((wire) => {
-			const I = [wire.hasRed, wire.hasBlue, wire.hasStar, wire.indicatorOn];
+			const I = [wire.hasStar, wire.hasRed, wire.hasBlue, wire.indicatorOn];
 			return P[
 				[0, 1, 2, 3, 2, 4, 2, 2, 0, 4, 1, 3, 0, 4, 1, 3][
 					Number(I[0]) * 8 + Number(I[1]) * 4 + Number(I[2]) * 2 + Number(I[3])
