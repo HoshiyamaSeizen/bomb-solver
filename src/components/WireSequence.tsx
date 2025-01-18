@@ -204,7 +204,8 @@ const WireSequence = () => {
 							<Typography.Text strong>Не нужно резать никакие провода</Typography.Text>
 						) : (
 							<Typography.Text strong>
-								Нужно резать провода {state.result.map((i) => i + 1).join(', ')}
+								Нужно резать провод{state.result.length > 1 ? 'а' : ''}{' '}
+								{state.result.map((i) => i + 1).join(', ')}
 							</Typography.Text>
 						)}
 					</Form.Item>
