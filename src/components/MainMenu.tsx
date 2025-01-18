@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, Row, Col } from 'antd';
 import { modules, moduleImageSize } from '../data/modules.ts';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
 	theme: string;
-	setPage: (page: string) => void;
 };
 
-const MainMenu: React.FC<Props> = ({ setPage }) => {
+const MainMenu: React.FC<Props> = () => {
+	const navigate = useNavigate();
 	const [images, setImages] = React.useState<{ [key: string]: string }>({});
 	const imageSize = moduleImageSize.width * moduleImageSize.scale;
 
@@ -47,7 +48,7 @@ const MainMenu: React.FC<Props> = ({ setPage }) => {
 								/>
 							</div>
 						}
-						onClick={() => setPage(module.name)}
+						onClick={() => navigate(module.name)}
 					>
 						<Card.Meta title={module.label} style={{ textAlign: 'center' }} />
 					</Card>

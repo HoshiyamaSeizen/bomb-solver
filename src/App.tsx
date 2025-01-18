@@ -3,24 +3,26 @@ import { useState } from 'react';
 import Menu from './components/Menu.tsx';
 import Router from './Router.tsx';
 import { HomeOutlined, MenuOutlined } from '@ant-design/icons';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const { Content, Header, Footer, Sider } = Layout;
 
 const App: React.FC = () => {
+	const location = useLocation();
+	const navigate = useNavigate();
 	const {
 		token: { colorBgContainer, borderRadiusLG, colorBorder },
 	} = theme.useToken();
 
-	const [page, setPage] = useState('main');
 	const [collapsed, setCollapsed] = useState(true);
 
-	const goToHomePage = () => setPage('main');
+	const goToHomePage = () => navigate('');
 	const toggleCollapse = () => setCollapsed(!collapsed);
 
 	return (
 		<Layout style={{ minHeight: '100vh' }}>
 			<Sider collapsedWidth="0" collapsed={collapsed}>
-				<Menu theme="dark" page={page} setPage={setPage} />
+				<Menu theme="dark" />
 			</Sider>
 			<Layout>
 				<Header
@@ -49,7 +51,7 @@ const App: React.FC = () => {
 						type="primary"
 						onClick={goToHomePage}
 						icon={<HomeOutlined />}
-						disabled={page === 'main'}
+						disabled={location.pathname === '/'}
 					/>
 					<Typography.Title
 						level={3}
@@ -72,7 +74,7 @@ const App: React.FC = () => {
 							borderRadius: borderRadiusLG,
 						}}
 					>
-						<Router theme="dark" page={page} setPage={setPage} />
+						<Router theme="dark" />
 					</div>
 				</Content>
 				<Footer style={{ textAlign: 'center' }}>
