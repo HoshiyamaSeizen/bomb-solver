@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Appendix from './Appendix';
 
 type Color = 'red' | 'blue' | 'yellow' | 'white';
-type Label = 'Прервать' | 'Взорвать' | 'Держать';
+type Label = 'Прервать' | 'Взорвать' | 'Держать' | 'Нажать';
 
 type State = {
 	color: Color;
@@ -85,7 +85,7 @@ const Button = () => {
 				</Form.Item>
 				<Form.Item label="Надпись на кнопке" name="label">
 					<Radio.Group>
-						{['Прервать', 'Взорвать', 'Держать'].map((label) => (
+						{['Прервать', 'Взорвать', 'Держать', 'Нажать'].map((label) => (
 							<Radio.Button
 								key={`label_${label}`}
 								value={label}
