@@ -69,9 +69,9 @@ const WireSequence = () => {
 			black: state.blackCount,
 		};
 		const counts = {
-			red: state.wires.filter((w) => w.color === 'red').length,
-			blue: state.wires.filter((w) => w.color === 'blue').length,
-			black: state.wires.filter((w) => w.color === 'black').length,
+			red: state.wires.filter((w) => w.present && w.color === 'red').length,
+			blue: state.wires.filter((w) => w.present && w.color === 'blue').length,
+			black: state.wires.filter((w) => w.present && w.color === 'black').length,
 		};
 		const countsNew = {
 			redCount: countsState.red + counts.red,
