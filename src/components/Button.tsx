@@ -84,12 +84,19 @@ const Button = () => {
 					</Radio.Group>
 				</Form.Item>
 				<Form.Item label="Надпись на кнопке" name="label">
-					<Radio.Group>
-						{['Прервать', 'Взорвать', 'Держать', 'Нажать'].map((label) => (
+					<Radio.Group style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+						{['Прервать', 'Взорвать', 'Держать', 'Нажать'].map((label, i) => (
 							<Radio.Button
 								key={`label_${label}`}
 								value={label}
 								checked={state.label === label}
+								style={{
+									width: 120,
+									textAlign: 'center',
+									borderRadius: 0,
+									borderTopRightRadius: i === 0 ? 8 : 0,
+									borderBottomRightRadius: i === 3 ? 8 : 0,
+								}}
 							>
 								{label}
 							</Radio.Button>
